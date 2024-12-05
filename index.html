@@ -16,6 +16,12 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <!-- Toastify JS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/acceso.css" />
     <!-- JavaScript -->
@@ -101,7 +107,7 @@
           </button>
         </div>
 
-        <div class="login-form p-5">
+        <form class="login-form p-5" id="signup-form">
           <div class="d-flex flex-column align-items-center">
             <div class="input-group flex-nowrap mb-4">
               <input
@@ -119,7 +125,7 @@
               <input
                 type="email"
                 class="form-control p-2"
-                id="floatingEmail"
+                id="signup-email"
                 placeholder="Ingresa tu correo"
               />
               <span class="input-group-text">
@@ -131,7 +137,7 @@
               <input
                 type="password"
                 class="form-control p-2"
-                id="floatingPasswordRegister"
+                id="signup-password"
                 placeholder="Crea tu contraseña"
               />
               <span class="input-group-text">
@@ -141,9 +147,9 @@
           </div>
 
           <div class="text-center">
-            <button type="button" class="btn">Registrarse</button>
+            <input type="submit" class="btn btn-primary" value="Registrarse" />
           </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -152,6 +158,11 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
+    ></script>
+    <!-- Toastify -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
     <!-- JavaScript -->
     <script src="./assets/js/acceso.js"></script>
