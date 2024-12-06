@@ -1,8 +1,18 @@
-import { createPost, onGetPost, deletePost } from "./firebase.js";
+import {
+  createPost,
+  onGetPost,
+  deletePost,
+  updatePost,
+  getPost,
+} from "./firebase.js";
 import { showMessage } from "./toastMessage.js";
 
 const postForm = document.querySelector("#post-form");
 const postsContainer = document.querySelector("#posts-container");
+
+// Variables para la edición
+let editStatus = false;
+let editId = "";
 
 export const setupPosts = () => {
   //TODO: CREATE
@@ -14,15 +24,33 @@ export const setupPosts = () => {
     const title = postForm["title"].value;
     const description = postForm["description"].value;
 
-    // Crear una nueva tarea
+    // Crear un nuevo post
     try {
-      await createPost(title, description);
-      // Mostrar mensaje de éxito
-      showMessage("Tarea creada", "success");
+      if (!editStatus) {
+        // Crear post
+        await createPost(title, description);
+        // Mostrar msj de éxito
+        showMessage("Post creado", "success");
+      } else {
+        // Actualizar post
+        await updatePost(editId, { title, description });
+        // Mostar msj de éxito
+        showMessage("Post actualizado", "success");
+
+        // Cambiar el estado de edición
+        editStatus = false;
+        // Cambiar el id de edición
+        editId = "";
+
+        // Cambiamos lo que muestra el formulario
+        document.getElementById("form-title").innerHTML =
+          "Agregar un nuevo post";
+        postForm["btn-agregar"].value = "Crear post";
+      }
       // Limpiar el formulario
       postForm.reset();
     } catch (error) {
-      // Mostrar mensaje de error
+      // Mostrar msj de error
       showMessage(error.code, "error");
     }
   });
@@ -43,6 +71,7 @@ export const setupPosts = () => {
         <header class="d-flex justify-content-between">
           <h4>${data.title}</h4>
           <div>
+            <button class="btn btn-info btn-editar" data-id="${doc.id}"><i class="bi bi-pencil-fill"></i> Editar</button>
             <button class="btn btn-danger btn-eliminar" data-id="${doc.id}"><i class="bi bi-trash3-fill"></i> Eliminar</button>
           </div>
         </header>
@@ -55,7 +84,32 @@ export const setupPosts = () => {
     // Mostrar los posts en el DOM
     postsContainer.innerHTML = postsHtml;
 
-    // UPDATE
+    //TODO: UPDATE
+    // Obtenemos los btns de editar
+    const btnsEditar = document.querySelectorAll(".btn-editar");
+
+    // Iteramos sobre cada botón
+    btnsEditar.forEach((btn) => {
+      btn.addEventListener("click", async ({ target: { dataset } }) => {
+        console.log(`id del click en el btn editar: ${dataset.id}}`);
+        // Obtenemos el documento
+        const doc = await getPost(dataset.id);
+        // Obtenemos los datos
+        const post = doc.data();
+
+        // LLenamos el formulario con los datos
+        postForm["title"].value = post.title;
+        postForm["description"].value = post.description;
+
+        // Actualizamos el estado de edición y el id edición
+        editStatus = true;
+        editId = doc.id;
+
+        // Cambiamos lo que muestra el formulario
+        document.getElementById("form-title").innerHTML = "Editar post";
+        postForm["btn-agregar"].value = "Guardar cambios";
+      });
+    });
 
     //TODO: DELETE
     // Obtenemos los botones de eliminar

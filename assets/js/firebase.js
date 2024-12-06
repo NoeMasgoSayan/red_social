@@ -11,6 +11,8 @@ import {
   addDoc,
   onSnapshot,
   deleteDoc,
+  updateDoc,
+  getDoc,
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -46,6 +48,12 @@ export const createPost = (title, description) =>
 //TODO: READ
 export const onGetPost = (callback) =>
   onSnapshot(collection(db, "Post"), callback);
+
+//TODO: UPDATE
+export const getPost = (id) => getDoc(doc(db, "Post", id));
+
+export const updatePost = (id, newData) =>
+  updateDoc(doc(db, "Post", id), newData);
 
 //TODO: DELETE
 export const deletePost = (id) => deleteDoc(doc(db, "Post", id));
