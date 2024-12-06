@@ -28,6 +28,10 @@ signUpForm.addEventListener("submit", async (e) => {
     const signupModal = document.querySelector("#cardRegistrarse");
     signupModal.style.display = "none";
 
+    //
+    const navbarBtns = document.querySelector("#navbar-btns");
+    navbarBtns.style.display = "block";
+
     // Limpiar el formulario
     signUpForm.reset();
   } catch (error) {

@@ -24,3 +24,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid white;
 }
+
+#navbar-btns {
+  display: none;
+}
