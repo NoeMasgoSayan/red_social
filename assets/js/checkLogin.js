@@ -1,3 +1,5 @@
+import { setupPosts } from "./setupPosts.js";
+
 const navbarBtns = document.querySelector("#navbar-btns");
 const cardInicioSesion = document.querySelector("#cardInicioSesion");
 const mainContainer = document.querySelector("#main-container");
@@ -12,7 +14,9 @@ export const checkLogin = (user) => {
     // Mostramos el main container
     mainContainer.style.display = "block";
     saludo.textContent = `Bienvenid@ ${user.email}`;
-    console.log("saludo");
+
+    // Cargamos los post
+    setupPosts();
   } else {
     navbarBtns.style.display = "none";
     cardInicioSesion.style.display = "block";

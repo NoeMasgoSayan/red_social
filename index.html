@@ -58,6 +58,41 @@
 
     <main id="main-container" class="p-4">
       <p id="saludo">Saluditosssssssssssss</p>
+
+      <div class="">
+        <form
+          action=""
+          class="w-50 border border-2 rounded-3 p-3"
+          id="post-form"
+        >
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              placeholder="Título del post"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              rows="3"
+              id="description"
+              placeholder="..."
+              required
+            ></textarea>
+          </div>
+          <div class="mb-1">
+            <input
+              type="submit"
+              value="Crear post"
+              id="btn-agregar"
+              class="btn btn-primary"
+            />
+          </div>
+        </form>
+      </div>
     </main>
 
     <div class="d-flex justify-content-center align-items-center vh-100">
