@@ -5,6 +5,7 @@ import { checkLogin } from "./checkLogin.js";
 import "./signupForms.js";
 import "./signOut.js";
 import "./signinForms.js";
+import "./googleLogin.js";
 
 //console.log(auth);
 // Manejo de la autenticación
