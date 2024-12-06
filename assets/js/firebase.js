@@ -9,6 +9,7 @@ import {
   collection,
   doc,
   addDoc,
+  onSnapshot,
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,5 +38,10 @@ export const auth = getAuth(app);
 export const db = getFirestore();
 
 // Operaciones CRUD post
+//TODO: CREATE
 export const createPost = (title, description) =>
   addDoc(collection(db, "Post"), { title, description });
+
+//TODO: READ
+export const onGetPost = (callback) =>
+  onSnapshot(collection(db, "Post"), callback);
