@@ -20,7 +20,6 @@ signUpForm.addEventListener("submit", async (e) => {
       password
     );
     // Registro exitoso
-    console.log(userCredentials);
     // Mostrar mensaje de éxito
     showMessage("Usuario registrado", "success");
 
@@ -29,8 +28,8 @@ signUpForm.addEventListener("submit", async (e) => {
     signupModal.style.display = "none";
 
     //
-    const navbarBtns = document.querySelector("#navbar-btns");
-    navbarBtns.style.display = "block";
+    /*const navbarBtns = document.querySelector("#navbar-btns");
+    navbarBtns.style.display = "block";*/
 
     // Limpiar el formulario
     signUpForm.reset();

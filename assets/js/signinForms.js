@@ -30,8 +30,8 @@ signInForm.addEventListener("submit", async (e) => {
     signinModal.style.display = "none";
 
     //
-    const navbarBtns = document.querySelector("#navbar-btns");
-    navbarBtns.style.display = "block";
+    /*const navbarBtns = document.querySelector("#navbar-btns");
+    navbarBtns.style.display = "block";*/
 
     // Limpiar el formulario
     signInForm.reset();
