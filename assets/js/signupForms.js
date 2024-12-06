@@ -23,6 +23,13 @@ signUpForm.addEventListener("submit", async (e) => {
     console.log(userCredentials);
     // Mostrar mensaje de éxito
     showMessage("Usuario registrado", "success");
+
+    // Cerrar el modal
+    const signupModal = document.querySelector("#cardRegistrarse");
+    signupModal.style.display = "none";
+
+    // Limpiar el formulario
+    signUpForm.reset();
   } catch (error) {
     // Registro fallido
     console.log(error);
