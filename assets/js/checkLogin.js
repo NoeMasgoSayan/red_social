@@ -1,4 +1,5 @@
 import { setupPosts } from "./setupPosts.js";
+import { setupPerfil } from "./setupPerfil.js";
 
 const navbarBtns = document.querySelector("#navbar-btns");
 const cardInicioSesion = document.querySelector("#cardInicioSesion");
@@ -17,6 +18,7 @@ export const checkLogin = (user) => {
 
     // Cargamos los post
     setupPosts();
+    setupPerfil();
   } else {
     navbarBtns.style.display = "none";
     cardInicioSesion.style.display = "block";

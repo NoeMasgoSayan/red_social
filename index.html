@@ -22,8 +22,10 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
-    <!-- CSS -->
+    <!-- CSS Acceso-->
     <link rel="stylesheet" href="./assets/css/acceso.css" />
+    <!-- CSS Perfil -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- JavaScript -->
     <script type="module" src="./assets/js/script.js"></script>
   </head>
@@ -31,7 +33,13 @@
     <header id="navbar-btns">
       <nav class="navbar navbar-expand-lg bg-black navbar-dark">
         <div class="container-fluid px-4">
-          <a class="navbar-brand text-white" href="#">Red Social</a>
+          <a
+            onclick="mostrarPerfil('redSocial')"
+            class="navbar-brand text-white"
+            id="redSocial"
+            href="#"
+            >Red Social</a
+          >
           <button
             class="navbar-toggler"
             type="button"
@@ -46,6 +54,15 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item logged-in">
+                <a
+                  onclick="mostrarPerfil('perfil')"
+                  class="nav-link text-white"
+                  id="perfil"
+                  href="#"
+                  >Perfil</a
+                >
+              </li>
+              <li class="nav-item logged-in">
                 <a class="nav-link text-white" id="logout" href="#"
                   >Cerrar Sesión</a
                 >
@@ -56,53 +73,59 @@
       </nav>
     </header>
 
-    <main id="main-container" class="p-4">
-      <p id="saludo">Saluditosssssssssssss</p>
+    <main class="p-4">
+      <section id="main-container">
+        <p id="saludo">Saluditosssssssssssss</p>
 
-      <div class="">
-        <form
-          action=""
-          class="w-50 border border-2 rounded-3 p-3"
-          id="post-form"
-        >
-          <div class="mb-3">
-            <h4 id="form-title">Agregar un nuevo post</h4>
+        <div class="">
+          <form
+            action=""
+            class="w-50 border border-2 rounded-3 p-3"
+            id="post-form"
+          >
+            <div class="mb-3">
+              <h4 id="form-title">Agregar un nuevo post</h4>
+            </div>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="Título del post"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                rows="3"
+                id="description"
+                placeholder="..."
+                required
+              ></textarea>
+            </div>
+            <div class="mb-1">
+              <input
+                type="submit"
+                value="Crear post"
+                id="btn-agregar"
+                class="btn btn-primary"
+              />
+            </div>
+          </form>
+          <div id="posts-container" class="mt-3">
+            <article class="post-container border border-2 rounded-2 p-3 my-3">
+              <h4>Titulo</h4>
+              <hr />
+              <p>Descripción</p>
+            </article>
           </div>
-          <div class="mb-3">
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              placeholder="Título del post"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <textarea
-              class="form-control"
-              rows="3"
-              id="description"
-              placeholder="..."
-              required
-            ></textarea>
-          </div>
-          <div class="mb-1">
-            <input
-              type="submit"
-              value="Crear post"
-              id="btn-agregar"
-              class="btn btn-primary"
-            />
-          </div>
-        </form>
-        <div id="posts-container" class="mt-3">
-          <article class="post-container border border-2 rounded-2 p-3 my-3">
-            <h4>Titulo</h4>
-            <hr />
-            <p>Descripción</p>
-          </article>
         </div>
-      </div>
+      </section>
+
+      <section id="main-perfil">
+        <p>perfilllllll</p>
+      </section>
     </main>
 
     <div class="d-flex justify-content-center align-items-center vh-100">

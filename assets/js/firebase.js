@@ -57,3 +57,7 @@ export const updatePost = (id, newData) =>
 
 //TODO: DELETE
 export const deletePost = (id) => deleteDoc(doc(db, "Post", id));
+
+//? CREATE
+export const createPerfil = (id, displayName, email, photo) =>
+  addDoc(collection(db, "Perfil"), { id, displayName, email, photo });

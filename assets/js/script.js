@@ -12,4 +12,18 @@ import "./googleLogin.js";
 onAuthStateChanged(auth, async (user) => {
   console.log(user);
   checkLogin(user);
+
+  if (user) {
+    const id = user.uid;
+    localStorage.setItem("idPerfil", id);
+
+    const displayName = user.displayName;
+    localStorage.setItem("namePerfil", displayName);
+
+    const email = user.email;
+    localStorage.setItem("emailPerfil", email);
+
+    const photo = user.photoURL;
+    localStorage.setItem("photoPerfil", photo);
+  }
 });
