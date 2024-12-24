@@ -10,10 +10,11 @@ import "./googleLogin.js";
 //console.log(auth);
 // Manejo de la autenticación
 onAuthStateChanged(auth, async (user) => {
-  console.log(user);
   checkLogin(user);
 
   if (user) {
+    console.log(user);
+
     const id = user.uid;
     localStorage.setItem("idPerfil", id);
 

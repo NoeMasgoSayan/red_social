@@ -1,5 +1,5 @@
 import { setupPosts } from "./setupPosts.js";
-import { setupPerfil } from "./setupPerfil.js";
+//import { setupPerfil } from "./setupPerfil.js";
 
 const navbarBtns = document.querySelector("#navbar-btns");
 const cardInicioSesion = document.querySelector("#cardInicioSesion");
@@ -13,12 +13,12 @@ export const checkLogin = (user) => {
     cardInicioSesion.style.display = "none";
 
     // Mostramos el main container
-    mainContainer.style.display = "block";
+    mainContainer.style.display = "flex";
     saludo.textContent = `Bienvenid@ ${user.email}`;
 
     // Cargamos los post
-    setupPosts();
-    setupPerfil();
+    setupPosts(user);
+    //setupPerfil();
   } else {
     navbarBtns.style.display = "none";
     cardInicioSesion.style.display = "block";

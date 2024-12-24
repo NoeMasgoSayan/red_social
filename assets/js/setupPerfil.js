@@ -1,4 +1,4 @@
-import { createPerfil } from "./firebase.js";
+/*import { createPerfil } from "./firebase.js";
 
 export const setupPerfil = () => {
   let id = localStorage.getItem("idPerfil");
@@ -12,3 +12,4 @@ export const setupPerfil = () => {
     console.log("problemas con perfil");
   }
 };
+*/

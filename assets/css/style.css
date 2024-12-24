@@ -1,3 +1,42 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* Página de inicio */
+
+#main-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+#post-form-container {
+  width: 50%;
+}
+
+#posts-container {
+  width: 50%;
+}
+
 #main-perfil {
   display: none;
+}
+
+/* Card de los post */
+
+.article-post {
+  border-radius: 20px;
+  border: 1px solid #000;
+}
+
+.article-post header {
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.post-profile-picture {
+  width: 40px;
+  border-radius: 20px;
 }

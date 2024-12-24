@@ -15,6 +15,6 @@ function mostrarPerfil(tipo) {
     document.getElementById("main-container").style.display = "none";
   } else if (tipo === "redSocial") {
     document.getElementById("main-perfil").style.display = "none";
-    document.getElementById("main-container").style.display = "block";
+    document.getElementById("main-container").style.display = "flex";
   }
 }

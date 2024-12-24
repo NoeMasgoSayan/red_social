@@ -14,7 +14,7 @@ const postsContainer = document.querySelector("#posts-container");
 let editStatus = false;
 let editId = "";
 
-export const setupPosts = () => {
+export const setupPosts = (user) => {
   //TODO: CREATE
   postForm.addEventListener("submit", async (e) => {
     // Prevenir que la página se recargue
@@ -26,14 +26,25 @@ export const setupPosts = () => {
 
     // Crear un nuevo post
     try {
+      const time = new Date().toLocaleString("es-PE", {
+        timeZone: "America/Lima",
+      });
+
       if (!editStatus) {
         // Crear post
-        await createPost(title, description);
+        await createPost(
+          title,
+          description,
+          user.displayName,
+          user.photoURL,
+          user.email,
+          time
+        );
         // Mostrar msj de éxito
         showMessage("Post creado", "success");
       } else {
         // Actualizar post
-        await updatePost(editId, { title, description });
+        await updatePost(editId, { title, description, time });
         // Mostar msj de éxito
         showMessage("Post actualizado", "success");
 
@@ -66,17 +77,41 @@ export const setupPosts = () => {
       console.log(`id del post: ${doc.id}`);
       const data = doc.data();
 
+      // Guardar URL de la imagen para ponerla en la db
+      let photo = data.userImage ? data.userImage : "./assets/img/perfil.png";
+      localStorage.setItem("photo", photo);
+
       postsHtml += `
-      <article class="post-container border border-2 rounded-2 p-3 my-3">
-        <header class="d-flex justify-content-between">
-          <h4>${data.title}</h4>
-          <div>
-            <button class="btn btn-info btn-editar" data-id="${doc.id}"><i class="bi bi-pencil-fill"></i> Editar</button>
-            <button class="btn btn-danger btn-eliminar" data-id="${doc.id}"><i class="bi bi-trash3-fill"></i> Eliminar</button>
+      <article class="article-post mb-3">
+        <header class="d-flex justify-content-between align-items-center p-3">
+          <div class="d-flex align-items-center gap-3">
+            <img class="post-profile-picture rounded-circle" src="${
+              data.userImage ? data.userImage : "./assets/img/perfil.png"
+            }" alt="${data.userName}" />
+            <p class="m-0">${data.userName}</p>
+            <p class="m-0">${data.time}</p>
           </div>
+          ${
+            user.email === data.userEmail
+              ? `<div>
+            <button class="btn btn-editar" data-id="${doc.id}"><i class="bi bi-pencil-fill"></i></button>
+            <button class="btn btn-eliminar" data-id="${doc.id}"><i class="bi bi-trash3-fill"></i></button>
+          </div>`
+              : `<div></div>`
+          }
         </header>
-        <hr />
-        <p>${data.description}</p>
+        <div class="p-3">
+          <h4>${data.title}</h4>
+          <p>${data.description}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn" data-id="${doc.id}">
+              <i class="bi bi-chat-right-dots"></i>
+            </button>
+            <button class="btn" data-id="${doc.id}">
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+        </div>
       </article>
       `;
     });
