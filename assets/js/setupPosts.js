@@ -83,7 +83,7 @@ export const setupPosts = (user) => {
 
       postsHtml += `
       <article class="article-post mb-3">
-        <header class="d-flex justify-content-between align-items-center p-3">
+        <header class="d-flex justify-content-between align-items-center m-3">
           <div class="d-flex align-items-center gap-3">
             <img class="post-profile-picture rounded-circle" src="${
               data.userImage ? data.userImage : "./assets/img/perfil.png"
@@ -100,7 +100,7 @@ export const setupPosts = (user) => {
               : `<div></div>`
           }
         </header>
-        <div class="p-3">
+        <div class="m-3">
           <h4>${data.title}</h4>
           <p>${data.description}</p>
           <div class="d-flex justify-content-between align-items-center">
@@ -112,6 +112,88 @@ export const setupPosts = (user) => {
             </button>
           </div>
         </div>
+        <!-- Comentarios -->
+            <div class="comentarios">
+              <div>
+                <article class="article-comment">
+                  <header
+                    class="d-flex justify-content-between align-items-center m-2"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <img class="post-profile-picture rounded-circle" src="${
+                        data.userImage
+                          ? data.userImage
+                          : "./assets/img/perfil.png"
+                      }" alt="${data.userName}" />
+                      <p class="m-0">${data.userName}</p>
+                      <p class="m-0">${data.time}</p>
+                    </div>
+                  </header>
+                  <div id="comment-form-container">
+                    <form action="" class="p-3" id="comment-form">
+                      <div class="mb-3">
+                        <textarea
+                          class="comment-control"
+                          rows="3"
+                          id="descriptionComment"
+                          placeholder="..."
+                          required
+                        ></textarea>
+                      </div>
+                      <div class="mb-1">
+                        <input
+                          type="submit"
+                          value="Crear comment"
+                          id="btn-agregar"
+                          class="btn btn-primary"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </article>
+              </div>
+              <div id="comment-container">
+                <article class="article-comment">
+                  <header
+                    class="d-flex justify-content-between align-items-center m-2"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <img class="post-profile-picture rounded-circle" src="${
+                        data.userImage
+                          ? data.userImage
+                          : "./assets/img/perfil.png"
+                      }" alt="${data.userName}" />
+                      <p class="m-0">${data.userName}</p>
+                      <p class="m-0">${data.time}</p>
+                    </div>
+                    ${
+                      user.email === data.userEmail
+                        ? `<div>
+                      <button
+                        class="btn btn-editar-comment"
+                        data-id="${doc.id}"
+                      >
+                        <i class="bi bi-pencil-fill"></i>
+                      </button>
+                      <button
+                        class="btn btn-eliminar-comment"
+                        data-id="${doc.id}"
+                      >
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                      <button class="btn" data-id="${doc.id}">
+                        <i class="bi bi-heart"></i>
+                      </button>
+                    </div>`
+                        : `<div></div>`
+                    }
+                  </header>
+                  <div class="p-2">
+                    <p>description</p>
+                  </div>
+                </article>
+              </div>
+            </div>
       </article>
       `;
     });

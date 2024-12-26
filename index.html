@@ -112,7 +112,7 @@
         <div id="posts-container" class="sectionPost p-5">
           <article class="article-post mb-3">
             <header
-              class="d-flex justify-content-between align-items-center p-3"
+              class="d-flex justify-content-between align-items-center m-3"
             >
               <div class="d-flex align-items-center gap-3">
                 <img
@@ -132,7 +132,7 @@
                 </button>
               </div>
             </header>
-            <div class="p-3">
+            <div class="m-3">
               <h4>title</h4>
               <p>description</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -142,6 +142,84 @@
                 <button class="btn" data-id="${doc.id}">
                   <i class="bi bi-heart"></i>
                 </button>
+              </div>
+            </div>
+            <!-- Comentarios -->
+            <div class="comentarios">
+              <div>
+                <article class="article-comment">
+                  <header
+                    class="d-flex justify-content-between align-items-center m-2"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <img
+                        src="./assets/img/perfil.png"
+                        alt="fotodeperfil"
+                        class="post-profile-picture"
+                      />
+                      <p class="m-0">userName</p>
+                      <p class="m-0">hora</p>
+                    </div>
+                  </header>
+                  <div id="comment-form-container">
+                    <form action="" class="p-3" id="comment-form">
+                      <div class="mb-3">
+                        <textarea
+                          class="comment-control"
+                          rows="3"
+                          id="descriptionComment"
+                          placeholder="..."
+                          required
+                        ></textarea>
+                      </div>
+                      <div class="mb-1">
+                        <input
+                          type="submit"
+                          value="Crear comment"
+                          id="btn-agregar"
+                          class="btn btn-primary"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </article>
+              </div>
+              <div id="comment-container">
+                <article class="article-comment">
+                  <header
+                    class="d-flex justify-content-between align-items-center m-2"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <img
+                        src="./assets/img/perfil.png"
+                        alt="fotodeperfil"
+                        class="post-profile-picture"
+                      />
+                      <p class="m-0">userName</p>
+                      <p class="m-0">hora</p>
+                    </div>
+                    <div>
+                      <button
+                        class="btn btn-editar-comment"
+                        data-id="${doc.id}"
+                      >
+                        <i class="bi bi-pencil-fill"></i>
+                      </button>
+                      <button
+                        class="btn btn-eliminar-comment"
+                        data-id="${doc.id}"
+                      >
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                      <button class="btn" data-id="${doc.id}">
+                        <i class="bi bi-heart"></i>
+                      </button>
+                    </div>
+                  </header>
+                  <div class="p-2">
+                    <p>description</p>
+                  </div>
+                </article>
               </div>
             </div>
           </article>

@@ -40,3 +40,23 @@
   width: 40px;
   border-radius: 20px;
 }
+
+/* Comentarios */
+
+.comentarios {
+  border-top: 1px solid #000;
+}
+/*
+.article-comment {
+  border: 1px solid #000;
+  border-radius: 20px;
+}
+*/
+.article-comment header .post-profile-picture {
+  width: 30px;
+  border-radius: 15px;
+}
+
+.article-comment button {
+  width: 10px;
+}
